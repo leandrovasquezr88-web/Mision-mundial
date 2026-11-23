@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import galeria1 from "@pack/imagenes/eventos-galeria-01.jpg";
+import galeria2 from "@pack/imagenes/eventos-galeria-02.jpg";
+import galeria3 from "@pack/imagenes/eventos-galeria-03.jpg";
+---
+
+<Seccion id="eventos-anteriores" titulo="Momentos que recordamos.">
+  <p class="max-w-3xl text-texto-suave" data-revelar>
+    Cada evento nos deja enseñanzas, experiencias y recuerdos especiales. Revive algunos de los
+    momentos que hemos compartido como familia.
+  </p>
+  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-revelar-cascada>
+    {
+      [
+        {
+          titulo: "Encuentros de fe",
+          imagen: galeria1,
+          alt: "Comunidad de Misión Mundial reunida en un encuentro",
+        },
+        {
+          titulo: "Momentos de adoración",
+          imagen: galeria2,
+          alt: "Congregación compartiendo un momento de adoración",
+        },
+        {
+          titulo: "Comunidad",
+          imagen: galeria3,
+          alt: "Miembros de Misión Mundial compartiendo en comunidad",
+        },
+      ].map((item) => (
+        <figure class="group overflow-hidden rounded-marca bg-superficie shadow-marca borde-marca">
+          <>
+            <div class="overflow-hidden">
+              <Image
+                src={item.imagen}
+                alt={item.alt}
+                class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <figcaption class="p-4 font-titulos font-bold">{item.titulo}</figcaption>
+          </>
+        </figure>
+      ))
+    }
+  </div>
+</Seccion>

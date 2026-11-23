@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Boton from "../ui/Boton.astro";
+import Seccion from "../ui/Seccion.astro";
+import templo from "@pack/imagenes/visitanos-bienvenida.jpg";
+---
+
+<Seccion id="invitacion" titulo="¡Te esperamos con los brazos abiertos!">
+  <div
+    class="mx-auto grid max-w-5xl items-center gap-7 overflow-hidden rounded-marca bg-superficie p-5 shadow-marca borde-marca md:grid-cols-2 md:p-8"
+  >
+    <Image
+      src={templo}
+      alt="Fotografía de la comunidad de Misión Mundial dando la bienvenida"
+      class="h-64 w-full rounded-marca object-cover md:h-80"
+    />
+    <div class="flex flex-col items-start gap-5" data-revelar>
+      <p class="text-texto-suave">
+        Nos encantaría conocerte. Encuentra nuestros horarios, descubre dónde estamos ubicados y
+        prepárate para compartir una experiencia especial en Misión Mundial.
+      </p>
+      <Boton href="/visitanos">Cómo llegar</Boton>
+    </div>
+  </div>
+</Seccion>

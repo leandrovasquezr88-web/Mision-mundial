@@ -1,0 +1,45 @@
+---
+import Seccion from "../ui/Seccion.astro";
+
+const testimonios = [
+  {
+    nombre: "Ángel Mendoza",
+    texto:
+      "Las células son un lugar para reunirnos como amigos y familia, aprender de Dios y divertirnos.",
+  },
+  {
+    nombre: "Ismael Carrera",
+    texto:
+      "Para mí la célula es vida: me restablece, me guía en mi diario vivir. Es conocer a Dios a través de las Escrituras y eso me hace muy, muy feliz. 😄",
+  },
+  {
+    nombre: "Paola Carrera",
+    texto: "Las células son momentos para aprender y compartir con la familia en Cristo.",
+  },
+];
+---
+
+<Seccion id="testimonios" titulo="Una familia que crece unida.">
+  <p class="mx-auto max-w-3xl text-center text-texto-suave" data-revelar>
+    Las células se viven, se comparten y dejan huellas en nuestra vida. Esto es lo que algunos de
+    sus integrantes nos cuentan.
+  </p>
+  <div class="mt-9 grid gap-5 md:grid-cols-3" data-revelar-cascada>
+    {
+      testimonios.map((testimonio) => (
+        <figure class="flex h-full flex-col rounded-marca border border-borde bg-superficie p-6 shadow-marca">
+          <span class="font-titulos text-4xl leading-none text-marca" aria-hidden="true">
+            “
+          </span>
+          <blockquote class="mt-2 flex-1 leading-relaxed text-texto-suave">
+            {testimonio.texto}
+          </blockquote>
+          <figcaption class="mt-6 border-t border-borde pt-4 font-bold">
+            {testimonio.nombre}
+          </figcaption>
+          <p class="mt-1 text-xs text-texto-suave">Integrante de Misión Mundial</p>
+        </figure>
+      ))
+    }
+  </div>
+</Seccion>

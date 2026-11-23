@@ -1,0 +1,45 @@
+﻿---
+import Seccion from "../ui/Seccion.astro";
+
+interface Pregunta {
+  pregunta: string;
+  respuesta: string;
+}
+
+const preguntas: Pregunta[] = [
+  {
+    pregunta: "¿Necesito registrarme para asistir?",
+    respuesta: "No necesitas registrarte para visitarnos. Puedes acompañarnos en nuestros cultos.",
+  },
+  {
+    pregunta: "¿Puedo asistir con mi familia?",
+    respuesta: "¡Por supuesto! Queremos que toda tu familia se sienta bienvenida.",
+  },
+  {
+    pregunta: "¿Cómo puedo llegar?",
+    respuesta:
+      "Puedes consultar nuestra ubicación mediante Google Maps o escribirnos para recibir indicaciones.",
+  },
+];
+---
+
+<Seccion id="preguntas-frecuentes" titulo="Resolvemos tus dudas.">
+  <p class="mx-auto max-w-3xl text-center text-texto-suave md:text-left" data-revelar>
+    Queremos que te sientas tranquilo y bienvenido antes de visitarnos. Por eso, hemos preparado
+    algunas respuestas a las preguntas más frecuentes para ayudarte a conocer mejor Misión Mundial y
+    saber qué esperar de tu primera visita.
+  </p>
+  <div class="mx-auto mt-10 max-w-2xl space-y-4" data-revelar-cascada>
+    {
+      preguntas.map((p) => (
+        <details class="rounded-marca bg-superficie p-4 shadow-marca borde-marca">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-titulos font-bold">
+            <span>{p.pregunta}</span>
+            <span class="text-marca">▾</span>
+          </summary>
+          <p class="mt-3 text-texto-suave">{p.respuesta}</p>
+        </details>
+      ))
+    }
+  </div>
+</Seccion>

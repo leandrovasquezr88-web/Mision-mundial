@@ -1,0 +1,17 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import Boton from "../ui/Boton.astro";
+---
+
+<Seccion id="inscripciones" titulo="Sé parte de nuestros encuentros.">
+  <div
+    class="mx-auto max-w-3xl rounded-marca bg-superficie p-6 text-center shadow-marca borde-marca sm:p-10"
+    data-revelar
+  >
+    <p class="text-texto-suave">
+      Algunos de nuestros eventos pueden requerir inscripción previa. Consulta los detalles de cada
+      actividad para conocer cómo participar.
+    </p>
+    <div class="mt-6"><Boton href="/contacto">Consultar inscripción</Boton></div>
+  </div>
+</Seccion>

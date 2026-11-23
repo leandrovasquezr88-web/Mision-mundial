@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import { redes } from "../../datos/sitio";
+import miniatura from "@pack/imagenes/envivo-miniatura.jpg";
+---
+
+<Seccion id="transmision" titulo="Acompáñanos en vivo.">
+  <p class="max-w-3xl text-texto-suave" data-revelar>
+    Comparte con nosotros un tiempo de adoración, oración y enseñanza de la Palabra de Dios a través
+    de nuestra página oficial de Facebook.
+  </p>
+  <div
+    class="mx-auto mt-8 grid max-w-5xl items-center gap-6 overflow-hidden rounded-marca bg-superficie p-5 shadow-marca borde-marca md:grid-cols-2 md:p-7"
+    data-revelar
+  >
+    <Image
+      src={miniatura}
+      alt="Miniatura de una transmisión de Misión Mundial"
+      class="h-64 w-full rounded-marca object-cover"
+    />
+    <div class="text-center md:text-left">
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-borde px-4 py-2 text-sm font-semibold text-texto-suave"
+        ><span class="h-2 w-2 rounded-full bg-marca"></span>Transmisión no disponible</span
+      ><p class="mt-5 text-texto-suave">
+        En este momento no estamos transmitiendo. Te invitamos a seguir nuestra página de Facebook
+        para conocer nuestras próximas transmisiones.
+      </p><a
+        href={redes.find((red) => red.nombre === "Facebook")?.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-5 inline-block font-semibold text-marca underline underline-offset-4"
+        >Visitar nuestra página de Facebook</a
+      >
+    </div>
+  </div>
+</Seccion>

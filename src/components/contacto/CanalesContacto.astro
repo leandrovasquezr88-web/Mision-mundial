@@ -1,0 +1,40 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import Boton from "../ui/Boton.astro";
+import { sitio } from "../../datos/sitio";
+---
+
+<Seccion id="canales-contacto" titulo="¿Cómo podemos ayudarte?">
+  <div class="grid gap-6 md:grid-cols-3" data-revelar-cascada>
+    <article class="rounded-marca bg-superficie p-6 shadow-marca borde-marca">
+      <span class="text-3xl" aria-hidden="true">☏</span>
+      <h3 class="mt-3 text-xl font-bold">WhatsApp</h3>
+      <p class="mt-2 text-texto-suave">
+        Comunícate con nosotros de manera rápida para solicitar información.
+      </p>
+      <a
+        href={sitio.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-4 inline-flex font-semibold text-marca underline underline-offset-4"
+        >Escríbenos por WhatsApp</a
+      >
+    </article>
+    <article class="rounded-marca bg-superficie p-6 shadow-marca borde-marca">
+      <span class="text-3xl" aria-hidden="true">✉</span>
+      <h3 class="mt-3 text-xl font-bold">Correo electrónico</h3>
+      <p class="mt-2 text-texto-suave">Envíanos tus preguntas o consultas.</p>
+      <a
+        href={`mailto:${sitio.correo}`}
+        class="mt-4 inline-block font-semibold text-marca underline underline-offset-4"
+        >{sitio.correo}</a
+      >
+    </article>
+    <article class="rounded-marca bg-superficie p-6 shadow-marca borde-marca">
+      <span class="text-3xl" aria-hidden="true">⌖</span>
+      <h3 class="mt-3 text-xl font-bold">Ubicación</h3>
+      <p class="mt-2 text-texto-suave">Encuentra nuestra iglesia y descubre cómo visitarnos.</p>
+      <div class="mt-4"><Boton href="/visitanos" variante="secundario">Ver cómo llegar</Boton></div>
+    </article>
+  </div>
+</Seccion>

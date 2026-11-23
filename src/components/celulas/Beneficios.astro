@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import portada from "@pack/imagenes/celulas-jovenes.jpg";
+const beneficios = [
+  {
+    icono: "📖",
+    titulo: "Crece en tu fe",
+    texto: "Aprende de la Biblia y fortalece tu relación con Dios.",
+  },
+  {
+    icono: "🤝",
+    titulo: "Construye amistades",
+    texto: "Conoce personas con quienes compartir tus experiencias.",
+  },
+  {
+    icono: "🙏",
+    titulo: "Encuentra apoyo",
+    texto:
+      "Forma parte de una comunidad donde podrás compartir y recibir acompañamiento espiritual.",
+  },
+];
+---
+
+<Seccion id="beneficios" titulo="Crecer juntos hace la diferencia.">
+  <div class="grid items-center gap-8 md:grid-cols-2">
+    <div>
+      <p class="text-texto-suave" data-revelar>
+        En Misión Mundial creemos que crecer espiritualmente también significa compartir con otras
+        personas. A través de nuestras células podrás aprender de la Palabra de Dios, fortalecer tus
+        amistades y encontrar una comunidad que te acompañe en tu camino de fe.
+      </p>
+      <ul class="mt-7 grid gap-4" data-revelar-cascada>
+        {
+          beneficios.map((b) => (
+            <li class="flex gap-4 rounded-marca bg-superficie p-4 shadow-marca borde-marca">
+              <>
+                <span class="text-3xl" aria-hidden="true">
+                  {b.icono}
+                </span>
+                <div>
+                  <>
+                    <h3 class="font-titulos font-bold">{b.titulo}</h3>
+                    <p class="mt-1 text-sm text-texto-suave">{b.texto}</p>
+                  </>
+                </div>
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="overflow-hidden rounded-marca shadow-marca" data-revelar>
+      <Image
+        src={portada}
+        alt="Jóvenes de Misión Mundial reunidos en una actividad"
+        class="h-72 w-full object-cover md:h-[520px]"
+      />
+    </div>
+  </div>
+</Seccion>

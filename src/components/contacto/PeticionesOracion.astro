@@ -1,0 +1,75 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import { sitio } from "../../datos/sitio";
+---
+
+<Seccion id="peticiones-oracion" titulo="Queremos orar por ti.">
+  <div
+    class="mx-auto max-w-2xl rounded-marca border border-borde bg-superficie p-6 shadow-marca sm:p-8"
+  >
+    <p class="mb-6 text-texto-suave">
+      Comparte tu petición con nuestro equipo de oración. El mensaje se preparará en tu aplicación
+      de correo para que puedas revisarlo y enviarlo.
+    </p>
+    <form id="formulario-oracion-email" class="space-y-5" data-correo-destino={sitio.correo}>
+      <label class="block"
+        ><span class="mb-2 block font-semibold"
+          >Nombre <span class="font-normal text-texto-suave">(opcional)</span></span
+        ><input
+          name="nombre"
+          autocomplete="name"
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"
+        /></label
+      >
+      <label class="block"
+        ><span class="mb-2 block font-semibold"
+          >Medio de contacto <span class="font-normal text-texto-suave">(opcional)</span></span
+        ><input
+          name="contacto"
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"
+        /></label
+      >
+      <label class="block"
+        ><span class="mb-2 block font-semibold">Petición de oración</span><textarea
+          name="peticion"
+          rows="5"
+          required
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"></textarea></label
+      >
+      <label class="flex items-start gap-3 text-sm text-texto-suave"
+        ><input name="autorizacion" type="checkbox" required class="mt-1" /><span
+          >Autorizo que esta petición sea recibida por el correo de contacto de Misión Mundial y
+          revisada por el equipo autorizado.</span
+        ></label
+      >
+      <button
+        type="submit"
+        class="text-white w-full rounded-marca bg-marca px-5 py-3 font-bold transition-opacity hover:opacity-85"
+        >Preparar petición de oración</button
+      >
+      <p id="estado-oracion" class="text-xs text-texto-suave" role="status" aria-live="polite">
+        Por privacidad, comparte solo la información que deseas enviar. Se abrirá tu aplicación de
+        correo para confirmar el envío.
+      </p>
+    </form>
+  </div>
+</Seccion>
+<script is:inline>
+  const oracionForm = document.getElementById("formulario-oracion-email");
+  if (oracionForm) {
+    oracionForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!oracionForm.reportValidity()) return;
+      const data = new FormData(oracionForm);
+      const body = [
+        `Nombre: ${data.get("nombre") || "No indicado"}`,
+        `Contacto: ${data.get("contacto") || "No indicado"}`,
+        "",
+        `Petición: ${data.get("peticion")}`,
+      ].join("\n");
+      window.location.href = `mailto:${oracionForm.dataset.correoDestino}?subject=${encodeURIComponent("Petición de oración")}&body=${encodeURIComponent(body)}`;
+      document.getElementById("estado-oracion").textContent =
+        "Revisa tu aplicación de correo y pulsa Enviar para completar el envío.";
+    });
+  }
+</script>

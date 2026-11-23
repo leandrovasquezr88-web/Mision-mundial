@@ -1,0 +1,80 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import { sitio } from "../../datos/sitio";
+
+const celulas = [
+  {
+    titulo: "Célula de Juniors",
+    edades: "12 a 16 años",
+    horario: "Todos los domingos, después de la alabanza",
+    detalle: "Un espacio para aprender de Dios, compartir y crecer junto a otros adolescentes.",
+    icono: "🌱",
+  },
+  {
+    titulo: "Células de Jóvenes",
+    edades: "16 a 21 años",
+    horario: "Cada dos semanas · 3:00 p. m.",
+    detalle: "Encuentros para fortalecer la fe, crear amistades y caminar juntos.",
+    icono: "✨",
+  },
+  {
+    titulo: "Célula Sur Valle",
+    edades: "Comunidad del sector",
+    horario: "Cada dos semanas · sábados · 3:00 p. m.",
+    detalle: "Un lugar para compartir la Palabra y construir comunidad cerca de casa.",
+    icono: "📍",
+  },
+  {
+    titulo: "Célula Norte",
+    edades: "Comunidad del sector",
+    horario: "Viernes · 7:00 p. m.",
+    detalle: "Un tiempo para encontrarnos, aprender y crecer en familia.",
+    icono: "🤝",
+  },
+];
+---
+
+<Seccion id="horarios-lugares" titulo="Encuentra tu célula. Crezcamos juntos.">
+  <p class="mx-auto max-w-3xl text-center text-texto-suave" data-revelar>
+    Tenemos espacios para distintas edades y sectores. Revisa los horarios y escríbenos para conocer
+    el punto de encuentro de cada grupo.
+  </p>
+  <div class="mt-9 grid gap-5 sm:grid-cols-2" data-revelar-cascada>
+    {
+      celulas.map((celula) => (
+        <article class="flex h-full flex-col rounded-marca border border-borde bg-superficie p-6 shadow-marca transition-transform duration-300 hover:-translate-y-1">
+          <div class="flex items-start gap-4">
+            <span
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-marca/10 text-2xl"
+              aria-hidden="true"
+            >
+              {celula.icono}
+            </span>
+            <div>
+              <h3 class="font-titulos text-xl font-bold">{celula.titulo}</h3>
+              <p class="mt-1 text-sm font-semibold text-marca">{celula.edades}</p>
+            </div>
+          </div>
+          <p class="mt-5 font-semibold">{celula.horario}</p>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-texto-suave">{celula.detalle}</p>
+          <p class="mt-4 rounded-marca bg-fondo p-3 text-sm text-texto-suave">
+            <strong class="text-texto">Lugar:</strong> Se confirma según la célula. Solicita la
+            ubicación por WhatsApp.
+          </p>
+          <a
+            href={sitio.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-flex items-center justify-center rounded-marca bg-marca px-5 py-3 text-center font-bold text-marca-contraste transition-opacity hover:opacity-85"
+          >
+            Consultar por WhatsApp
+          </a>
+        </article>
+      ))
+    }
+  </div>
+  <p class="mx-auto mt-7 max-w-3xl text-center text-sm text-texto-suave">
+    ¿No sabes cuál elegir? Escríbenos por WhatsApp. Te ayudaremos a encontrar el grupo y confirmar
+    su próxima reunión.
+  </p>
+</Seccion>

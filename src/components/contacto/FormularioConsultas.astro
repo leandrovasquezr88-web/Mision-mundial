@@ -1,0 +1,80 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import { sitio } from "../../datos/sitio";
+---
+
+<Seccion id="formulario-consultas" titulo="Envíanos un mensaje.">
+  <div
+    class="mx-auto max-w-2xl rounded-marca border border-borde bg-superficie p-6 shadow-marca sm:p-8"
+  >
+    <p class="mb-6 text-texto-suave">
+      Completa los campos y se abrirá tu aplicación de correo con la consulta dirigida al equipo de
+      Misión Mundial. Podrás revisarla antes de enviarla.
+    </p>
+    <form id="formulario-consultas-email" class="space-y-5" data-correo-destino={sitio.correo}>
+      <label class="block"
+        ><span class="mb-2 block font-semibold">Nombre completo</span><input
+          name="nombre"
+          autocomplete="name"
+          required
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"
+        /></label
+      >
+      <label class="block"
+        ><span class="mb-2 block font-semibold">Correo electrónico</span><input
+          name="correo"
+          type="email"
+          autocomplete="email"
+          required
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"
+        /></label
+      >
+      <label class="block"
+        ><span class="mb-2 block font-semibold">Asunto</span><input
+          name="asunto"
+          required
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"
+        /></label
+      >
+      <label class="block"
+        ><span class="mb-2 block font-semibold">Mensaje</span><textarea
+          name="mensaje"
+          rows="5"
+          required
+          class="w-full rounded-marca border border-borde bg-fondo px-4 py-3"></textarea></label
+      >
+      <label class="flex items-start gap-3 text-sm text-texto-suave"
+        ><input name="autorizacion" type="checkbox" required class="mt-1" /><span
+          >Autorizo el uso de mis datos para responder a esta consulta.</span
+        ></label
+      >
+      <button
+        type="submit"
+        class="text-white w-full rounded-marca bg-marca px-5 py-3 font-bold transition-opacity hover:opacity-85"
+        >Preparar correo</button
+      >
+      <p id="estado-consultas" class="text-xs text-texto-suave" role="status" aria-live="polite">
+        El mensaje se enviará desde tu aplicación de correo cuando confirmes el envío.
+      </p>
+    </form>
+  </div>
+</Seccion>
+<script is:inline>
+  const consultasForm = document.getElementById("formulario-consultas-email");
+  if (consultasForm) {
+    consultasForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!consultasForm.reportValidity()) return;
+      const data = new FormData(consultasForm);
+      const body = [
+        `Nombre: ${data.get("nombre")}`,
+        `Correo de respuesta: ${data.get("correo")}`,
+        "",
+        String(data.get("mensaje")),
+      ].join("\n");
+      window.location.href = `mailto:${consultasForm.dataset.correoDestino}?subject=${encodeURIComponent(String(data.get("asunto")))}&body=${encodeURIComponent(body)}`;
+      document.getElementById("estado-consultas").textContent =
+        "Revisa tu aplicación de correo y pulsa Enviar para completar el envío.";
+    });
+  }
+</script>

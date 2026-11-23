@@ -1,0 +1,29 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import Boton from "../ui/Boton.astro";
+---
+
+<Seccion id="calendario" titulo="Organiza tu tiempo y acompáñanos.">
+  <div
+    class="mx-auto max-w-4xl rounded-marca bg-superficie p-6 shadow-marca borde-marca sm:p-8"
+    data-revelar
+  >
+    <div class="flex items-center gap-3">
+      <span
+        class="flex h-12 w-12 items-center justify-center rounded-full bg-marca/10 text-2xl"
+        aria-hidden="true">▦</span
+      >
+      <div>
+        <h3 class="font-bold">Calendario de actividades</h3>
+        <p class="text-sm text-texto-suave">Fechas destacadas de Misión Mundial</p>
+      </div>
+    </div>
+    <div class="mt-6 rounded-marca border border-dashed border-borde p-8 text-center">
+      <p class="font-semibold">Próximas fechas por anunciar</p>
+      <p class="mt-2 text-sm text-texto-suave">
+        Cuando tengamos la programación oficial, aparecerá aquí para que puedas organizar tu visita.
+      </p>
+    </div>
+    <div class="mt-5"><Boton href="#inscripciones">Ver información de inscripción</Boton></div>
+  </div>
+</Seccion>

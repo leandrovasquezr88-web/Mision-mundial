@@ -1,0 +1,62 @@
+﻿---
+import Contenedor from "./ui/Contenedor.astro";
+import { menu, redes, sitio } from "../datos/sitio";
+
+const anio = new Date().getFullYear();
+---
+
+<footer class="border-t border-borde bg-superficie text-sm">
+  <Contenedor class="flex flex-col gap-6 py-8">
+    <div class="flex flex-col gap-2">
+      <p class="font-titulos text-lg font-bold">Misión Mundial</p>
+      <p class="font-bold">«Un abrazo sin límites»</p>
+      <p class="text-texto-suave">
+        Somos una familia cristiana comprometida con compartir el amor de Dios y fortalecer la fe a
+        través de su Palabra y la comunidad.
+      </p>
+    </div>
+
+    <nav aria-label="Pie de página">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        {
+          menu.map((item) => (
+            <li>
+              <a href={item.href} class="underline underline-offset-4">
+                {item.texto}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <p>{sitio.pie || `© ${anio} ${sitio.nombre}`}</p>
+
+      {
+        (sitio.correo || redes.length > 0) && (
+          <ul class="flex flex-wrap gap-4">
+            {sitio.correo && (
+              <li>
+                <a href={`mailto:${sitio.correo}`} class="underline underline-offset-4">
+                  {sitio.correo}
+                </a>
+              </li>
+            )}
+            {redes.map((red) => (
+              <li>
+                <a href={red.href} class="underline underline-offset-4">
+                  {red.nombre}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+
+    <p>
+      <a href="/privacidad" class="underline underline-offset-4">Política de privacidad</a>
+    </p>
+  </Contenedor>
+</footer>

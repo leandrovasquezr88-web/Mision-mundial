@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import Boton from "../ui/Boton.astro";
+import { sitio } from "../../datos/sitio";
+import comunidad from "@pack/imagenes/visitanos-comunidad.jpg";
+import bienvenida from "@pack/imagenes/visitanos-bienvenida.jpg";
+---
+
+<Seccion id="ubicacion" titulo="Te esperamos cada domingo.">
+  <div
+    class="mx-auto mb-8 grid max-w-6xl items-center gap-6 overflow-hidden rounded-marca bg-superficie p-5 shadow-marca borde-marca md:grid-cols-2 md:p-7"
+    data-revelar
+  >
+    <Image
+      src={bienvenida}
+      alt="Fotografía de bienvenida a la comunidad de Misión Mundial"
+      class="h-56 w-full rounded-marca object-cover md:h-72"
+    />
+    <div>
+      <h3 class="font-titulos text-2xl font-bold">Tu primera visita comienza aquí.</h3><p
+        class="mt-3 text-texto-suave"
+      >
+        Nos alegra recibirte. Queremos que conozcas nuestra comunidad y encuentres un espacio para
+        compartir en familia.
+      </p>
+    </div>
+  </div>
+  <div class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
+    <div class="overflow-hidden rounded-marca bg-superficie shadow-marca borde-marca" data-revelar>
+      <Image
+        src={comunidad}
+        alt="Miembros de Misión Mundial compartiendo en comunidad"
+        class="h-56 w-full object-cover sm:h-72"
+      />
+      <div class="p-6">
+        <h3 class="font-titulos text-xl font-bold">Nuestro horario</h3>
+        <p class="mt-3 text-texto-suave">Culto general</p><p class="mt-1 text-lg font-semibold">
+          {sitio.horarioCulto}
+        </p>
+        <h3 class="mt-6 font-titulos text-xl font-bold">Dónde estamos</h3><p
+          class="mt-3 text-texto-suave"
+        >
+          {sitio.direccion}
+        </p>
+        <div class="mt-6"><Boton href={sitio.googleMaps}>Abrir Google Maps</Boton></div>
+      </div>
+    </div>
+    <div
+      class="min-h-72 overflow-hidden rounded-marca border border-borde shadow-marca"
+      data-revelar
+    >
+      <iframe
+        title="Ubicación de Misión Mundial en Quito"
+        src="https://www.google.com/maps?q=Fray+Bartolome+de+las+Casas+RG43%2BQP+Quito+Ecuador&output=embed"
+        class="h-full min-h-72 w-full"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</Seccion>

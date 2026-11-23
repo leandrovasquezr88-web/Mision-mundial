@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Boton from "../ui/Boton.astro";
+import Seccion from "../ui/Seccion.astro";
+import eventos from "@pack/imagenes/inicio-eventos.jpeg";
+---
+
+<Seccion id="proximos-eventos" titulo="Vive momentos especiales con nosotros.">
+  <div class="grid items-center gap-8 md:grid-cols-2">
+    <div class="flex flex-col items-start gap-5" data-revelar>
+      <p class="max-w-2xl text-texto-suave">
+        Descubre los próximos cultos especiales, encuentros y actividades que hemos preparado para
+        compartir en comunidad.
+      </p>
+      <Boton href="/eventos">Ver todos los eventos</Boton>
+    </div>
+    <div class="overflow-hidden rounded-marca shadow-marca" data-revelar>
+      <Image
+        src={eventos}
+        alt="Fotografía de una actividad especial realizada en Misión Mundial"
+        class="h-64 w-full object-cover sm:h-80"
+      />
+    </div>
+  </div>
+</Seccion>

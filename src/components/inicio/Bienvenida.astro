@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import Boton from "../ui/Boton.astro";
+import Seccion from "../ui/Seccion.astro";
+import bienvenida from "@pack/imagenes/inicio-templo.jpg";
+---
+
+<Seccion id="bienvenida">
+  <div class="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+    <div
+      class="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left"
+    >
+      <p class="mb-3 text-sm font-bold tracking-[0.2em] text-marca uppercase" data-revelar>
+        Misión Mundial
+      </p>
+      <h1 class="max-w-2xl text-3xl font-bold tracking-tight md:text-5xl" data-revelar>
+        Misión Mundial: Un abrazo sin límites.
+      </h1>
+      <p class="mt-5 max-w-xl text-texto-suave" data-revelar>
+        ¡Bienvenido a Misión Mundial! Somos una familia cristiana que comparte el amor de Dios y
+        busca transformar vidas a través de la fe, la enseñanza de su Palabra y la comunidad. Aquí
+        encontrarás un lugar para crecer espiritualmente y acercarte más a Jesús.
+      </p>
+      <div class="mt-7" data-revelar><Boton href="/visitanos">Planifica tu visita</Boton></div>
+    </div>
+    <div class="order-1 overflow-hidden rounded-marca shadow-marca lg:order-2" data-revelar>
+      <Image
+        src={bienvenida}
+        alt="Fotografía panorámica de la congregación de Misión Mundial durante un culto"
+        class="h-64 w-full object-cover sm:h-80 lg:h-[470px]"
+      />
+    </div>
+  </div>
+</Seccion>

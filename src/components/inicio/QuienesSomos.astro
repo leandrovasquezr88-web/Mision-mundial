@@ -1,0 +1,24 @@
+﻿---
+import { Image } from "astro:assets";
+import Boton from "../ui/Boton.astro";
+import Seccion from "../ui/Seccion.astro";
+import comunidad from "@pack/imagenes/inicio-comunidad.jpg";
+---
+
+<Seccion id="quienes-somos" titulo="Una familia unida por la fe.">
+  <div class="grid gap-8 md:grid-cols-2 md:items-center">
+    <div class="flex flex-col gap-4">
+      <p class="text-texto-suave" data-revelar>
+        En Misión Mundial creemos que cada persona es importante. Nuestro propósito es compartir el
+        mensaje de Jesucristo, fortalecer la fe y construir una comunidad donde todos puedan
+        experimentar el amor de Dios.
+      </p>
+      <Boton href="/conocenos" data-revelar>Conoce nuestra historia</Boton>
+    </div>
+    <Image
+      src={comunidad}
+      alt="Fotografía de miembros de Misión Mundial compartiendo en una actividad"
+      class="w-full rounded-marca shadow-marca"
+    />
+  </div>
+</Seccion>

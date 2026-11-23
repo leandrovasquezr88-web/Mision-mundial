@@ -1,0 +1,112 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import { sitio } from "../../datos/sitio";
+const grupos = [
+  { valor: "Juniors (12 a 16 años)", texto: "Juniors (12 a 16 años)" },
+  { valor: "Jóvenes (16 a 21 años)", texto: "Jóvenes (16 a 21 años)" },
+  { valor: "Sur Valle", texto: "Célula Sur Valle" },
+  { valor: "Norte", texto: "Célula Norte" },
+  { valor: "No estoy seguro", texto: "Necesito orientación" },
+];
+---
+
+<Seccion id="formulario-celulas" titulo="Da el siguiente paso.">
+  <p class="mx-auto max-w-3xl text-center text-texto-suave" data-revelar>
+    Cuéntanos un poco de ti y prepara tu primer encuentro. Al enviar, se abrirá tu aplicación de
+    correo con el mensaje listo para revisar y enviar.
+  </p>
+  <form
+    id="formulario-celulas"
+    class="mx-auto mt-9 max-w-xl space-y-4 rounded-marca border border-borde bg-superficie p-6 shadow-marca md:p-8"
+    data-correo-destino={sitio.correo}
+  >
+    <label class="block font-semibold" for="celulas-nombre"
+      >Nombre completo
+      <input
+        id="celulas-nombre"
+        name="nombre"
+        required
+        autocomplete="name"
+        class="mt-2 w-full rounded-marca border border-borde bg-fondo p-3"
+        placeholder="Tu nombre"
+      />
+    </label>
+    <label class="block font-semibold" for="celulas-edad"
+      >Edad
+      <input
+        id="celulas-edad"
+        name="edad"
+        type="number"
+        min="1"
+        max="110"
+        required
+        class="mt-2 w-full rounded-marca border border-borde bg-fondo p-3"
+        placeholder="Tu edad"
+      />
+    </label>
+    <label class="block font-semibold" for="celulas-whatsapp"
+      >Número de WhatsApp
+      <input
+        id="celulas-whatsapp"
+        name="whatsapp"
+        type="tel"
+        required
+        class="mt-2 w-full rounded-marca border border-borde bg-fondo p-3"
+        placeholder="Tu número de contacto"
+      />
+    </label>
+    <label class="block font-semibold" for="celulas-grupo"
+      >¿Qué célula te interesa?
+      <select
+        id="celulas-grupo"
+        name="grupo"
+        required
+        class="mt-2 w-full rounded-marca border border-borde bg-fondo p-3"
+      >
+        <option value="">Selecciona una opción</option>
+        {grupos.map((grupo) => <option value={grupo.valor}>{grupo.texto}</option>)}
+      </select>
+    </label>
+    <label class="flex items-start gap-3 text-sm leading-relaxed text-texto-suave">
+      <input name="autorizacion" type="checkbox" required class="mt-1" />
+      <span
+        >Autorizo que Misión Mundial utilice estos datos para responder a mi solicitud de
+        información.</span
+      >
+    </label>
+    <button
+      type="submit"
+      class="w-full rounded-marca bg-marca px-5 py-3 font-bold text-marca-contraste shadow-marca transition-opacity hover:opacity-85"
+      >Preparar solicitud por correo</button
+    >
+    <p
+      id="estado-formulario-celulas"
+      class="text-xs text-texto-suave"
+      role="status"
+      aria-live="polite"
+    >
+      Se abrirá tu aplicación de correo; tendrás que confirmar el envío desde allí.
+    </p>
+  </form>
+</Seccion>
+<script is:inline>
+  const celulasForm = document.getElementById("formulario-celulas");
+  if (celulasForm) {
+    celulasForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!celulasForm.reportValidity()) return;
+      const data = new FormData(celulasForm);
+      const body = [
+        "Solicitud de información sobre células",
+        `Nombre: ${data.get("nombre")}`,
+        `Edad: ${data.get("edad")}`,
+        `WhatsApp: ${data.get("whatsapp")}`,
+        `Grupo de interés: ${data.get("grupo")}`,
+      ].join("\n");
+      const email = celulasForm.dataset.correoDestino;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent("Solicitud de información sobre células")}&body=${encodeURIComponent(body)}`;
+      document.getElementById("estado-formulario-celulas").textContent =
+        "Se abrió tu aplicación de correo. Revisa el mensaje y pulsa Enviar para completar tu solicitud.";
+    });
+  }
+</script>

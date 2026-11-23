@@ -1,0 +1,80 @@
+﻿---
+import { Image } from "astro:assets";
+import Contenedor from "./ui/Contenedor.astro";
+import logo from "@pack/logos/logo-mision-mundial.png";
+import { encabezado, menu } from "../datos/sitio";
+
+const actual = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const enlace =
+  "underline-offset-4 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline";
+---
+
+<header class:list={["z-40 border-b border-borde bg-fondo", encabezado.fijo && "sticky top-0"]}>
+  <Contenedor class="relative flex flex-wrap items-center justify-between gap-4 py-4">
+    <a href="/" class="flex items-center">
+      <Image
+        src={logo}
+        alt="Logotipo institucional de Misión Mundial, con el eslogan «Un abrazo sin límites»"
+        class="h-10 w-auto"
+      />
+    </a>
+
+    {
+      encabezado.menu !== "desplegable-siempre" && (
+        <nav
+          aria-label="Principal"
+          class:list={[encabezado.menu === "desplegable" && "hidden lg:block"]}
+        >
+          <ul class="flex flex-wrap gap-x-6 gap-y-2">
+            {menu.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={item.href === actual ? "page" : undefined}
+                  class={enlace}
+                >
+                  {item.texto}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      encabezado.menu !== "barra" && (
+        <details class:list={["group", encabezado.menu === "desplegable" && "lg:hidden"]}>
+          <summary class="flex cursor-pointer list-none items-center gap-2 rounded-marca px-3 py-2 font-bold borde-marca [&::-webkit-details-marker]:hidden">
+            <span aria-hidden="true" class="group-open:hidden">
+              ☰
+            </span>
+            <span aria-hidden="true" class="hidden group-open:inline">
+              ✕
+            </span>
+            Menú
+          </summary>
+          <nav
+            aria-label="Principal"
+            class="absolute inset-x-0 top-full border-y border-borde bg-fondo shadow-marca"
+          >
+            <ul class="flex flex-col px-4 py-2 sm:px-6">
+              {menu.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={item.href === actual ? "page" : undefined}
+                    class:list={["block py-3", enlace]}
+                  >
+                    {item.texto}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </details>
+      )
+    }
+  </Contenedor>
+</header>

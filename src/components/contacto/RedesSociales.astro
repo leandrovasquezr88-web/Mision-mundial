@@ -1,0 +1,35 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import { redes } from "../../datos/sitio";
+---
+
+<Seccion id="redes-sociales" titulo="Sigamos conectados.">
+  <p class="mx-auto max-w-3xl text-center text-texto-suave" data-revelar>
+    Forma parte de nuestra comunidad digital y mantente informado sobre nuestras actividades y
+    encuentros.
+  </p>
+  <div class="mx-auto mt-8 grid max-w-2xl gap-5 sm:grid-cols-2" data-revelar-cascada>
+    <div class="rounded-marca bg-superficie p-6 text-center shadow-marca borde-marca">
+      <h3 class="text-xl font-bold">Facebook</h3>
+      <p class="mt-2 text-texto-suave">Noticias, actividades y transmisiones en vivo.</p>
+      <a
+        href={redes.find((red) => red.nombre === "Facebook")?.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-4 inline-block font-semibold text-marca underline underline-offset-4"
+        >Visitar Facebook</a
+      >
+    </div>
+    <div class="rounded-marca bg-superficie p-6 text-center shadow-marca borde-marca">
+      <h3 class="text-xl font-bold">Instagram</h3>
+      <p class="mt-2 text-texto-suave">Fotografías, anuncios y contenido de la comunidad.</p>
+      <a
+        href={redes.find((red) => red.nombre === "Instagram")?.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-4 inline-block font-semibold text-marca underline underline-offset-4"
+        >Visitar Instagram</a
+      >
+    </div>
+  </div>
+</Seccion>

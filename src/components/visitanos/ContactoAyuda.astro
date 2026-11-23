@@ -1,0 +1,17 @@
+---
+import Seccion from "../ui/Seccion.astro";
+import Boton from "../ui/Boton.astro";
+import { sitio } from "../../datos/sitio";
+---
+
+<Seccion id="contacto-visita" titulo="¿Necesitas ayuda para llegar?">
+  <div
+    class="mx-auto w-full max-w-2xl rounded-marca bg-superficie p-6 text-center shadow-marca borde-marca md:p-10"
+    data-revelar
+  >
+    <p class="mx-auto mb-6 max-w-md text-texto-suave" data-revelar>
+      Si tienes alguna pregunta antes de visitarnos, estaremos felices de ayudarte.
+    </p>
+    <Boton href={sitio.whatsapp} data-revelar>Escríbenos por WhatsApp</Boton>
+  </div>
+</Seccion>

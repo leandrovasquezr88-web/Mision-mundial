@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Seccion from "../components/ui/Seccion.astro";
+import { sitio } from "../datos/sitio";
+---
+
+<Layout title="Política de privacidad | Misión Mundial">
+  <Seccion id="politica-privacidad" titulo="Política de privacidad">
+    <article
+      class="mx-auto max-w-3xl space-y-6 rounded-marca border border-borde bg-superficie p-6 leading-relaxed shadow-marca md:p-9"
+    >
+      <p class="text-sm text-texto-suave">Última actualización: noviembre de 2026</p>
+      <p>
+        En Misión Mundial respetamos la privacidad de las personas que visitan este sitio y
+        procuramos tratar sus datos con cuidado y transparencia.
+      </p>
+      <div>
+        <h2 class="font-titulos text-xl font-bold">Información que puedes compartir</h2><p
+          class="mt-2 text-texto-suave"
+        >
+          Los formularios pueden solicitar nombre, edad, datos de contacto, consultas o peticiones
+          de oración. Comparte únicamente la información necesaria para que podamos responderte.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-titulos text-xl font-bold">Para qué utilizamos la información</h2><p
+          class="mt-2 text-texto-suave"
+        >
+          La información se utiliza para responder consultas, orientar sobre las células y
+          actividades de la iglesia, o recibir las peticiones de oración que decidas compartir.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-titulos text-xl font-bold">Cómo se envían los formularios</h2><p
+          class="mt-2 text-texto-suave"
+        >
+          Al enviar un formulario se abre la aplicación de correo configurada en tu dispositivo con
+          un mensaje preparado. Tú puedes revisarlo y decidir si lo envías. El sitio no almacena
+          directamente los datos introducidos en esos formularios.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-titulos text-xl font-bold">Acceso y confidencialidad</h2><p
+          class="mt-2 text-texto-suave"
+        >
+          Los mensajes recibidos en el correo de contacto deben ser revisados únicamente por las
+          personas encargadas de atender cada solicitud. Las peticiones de oración deben tratarse
+          con especial discreción y no compartirse públicamente sin autorización.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-titulos text-xl font-bold">Tus decisiones</h2><p
+          class="mt-2 text-texto-suave"
+        >
+          No estás obligado a enviar información. Si deseas consultar, corregir o solicitar la
+          eliminación de información que hayas enviado, puedes escribir a <a
+            class="font-semibold text-marca underline"
+            href={`mailto:${sitio.correo}`}>{sitio.correo}</a
+          >.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-titulos text-xl font-bold">Contacto</h2><p class="mt-2 text-texto-suave">
+          Para preguntas sobre esta política, comunícate con Misión Mundial a través de <a
+            class="font-semibold text-marca underline"
+            href={`mailto:${sitio.correo}`}>{sitio.correo}</a
+          >.
+        </p>
+      </div>
+      <p class="border-t border-borde pt-5 text-sm text-texto-suave">
+        Esta es una política informativa inicial para el sitio. Antes de publicarla como documento
+        legal definitivo, la iglesia debe revisarla y ajustarla a sus prácticas reales y a la
+        normativa aplicable.
+      </p>
+    </article>
+  </Seccion>
+</Layout>

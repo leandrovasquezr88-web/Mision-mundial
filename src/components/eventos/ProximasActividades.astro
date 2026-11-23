@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import Boton from "../ui/Boton.astro";
+import congresos from "@pack/imagenes/eventos-congresos.jpg";
+import reuniones from "@pack/imagenes/eventos-reuniones.jpg";
+import jovenes from "@pack/imagenes/eventos-jovenes.jpg";
+const actividades = [
+  {
+    titulo: "Congresos",
+    texto:
+      "Encuentros especiales para fortalecer la fe mediante la enseñanza, la adoración y la comunidad.",
+    imagen: congresos,
+    alt: "Fotografía de un congreso de Misión Mundial",
+  },
+  {
+    titulo: "Reuniones especiales",
+    texto: "Espacios de oración, enseñanza y celebración para toda la congregación.",
+    imagen: reuniones,
+    alt: "Fotografía de una reunión especial de Misión Mundial",
+  },
+  {
+    titulo: "Encuentros juveniles",
+    texto:
+      "Actividades dirigidas a los jóvenes para crecer espiritualmente y fortalecer amistades.",
+    imagen: jovenes,
+    alt: "Fotografía de un encuentro juvenil de Misión Mundial",
+  },
+];
+---
+
+<Seccion id="proximas-actividades" titulo="Momentos para compartir.">
+  <p class="max-w-3xl text-texto-suave" data-revelar>
+    Así son algunos de los espacios que disfrutamos como congregación. Las próximas fechas se
+    anunciarán cuando estén confirmadas.
+  </p>
+  <div class="mt-8 grid gap-6 md:grid-cols-3" data-revelar-cascada>
+    {
+      actividades.map((actividad) => (
+        <article class="group overflow-hidden rounded-marca bg-superficie shadow-marca borde-marca">
+          <>
+            <div class="overflow-hidden">
+              <Image
+                src={actividad.imagen}
+                alt={actividad.alt}
+                class="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div class="p-5">
+              <>
+                <h3 class="font-titulos text-xl font-bold">{actividad.titulo}</h3>
+                <p class="mt-2 text-sm text-texto-suave">{actividad.texto}</p>
+                <p class="mt-4 text-sm font-semibold text-marca">Próximas fechas por anunciar</p>
+              </>
+            </div>
+          </>
+        </article>
+      ))
+    }
+  </div>
+</Seccion>

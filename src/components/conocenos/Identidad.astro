@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import historia from "@pack/imagenes/conocenos-historia.jpeg";
+import fe from "@pack/imagenes/conocenos-fe.jpg";
+import pastores from "@pack/imagenes/conocenos-pastores.jpg";
+import ministerios from "@pack/imagenes/conocenos-ministerios.jpg";
+
+const pilares = [
+  {
+    icono: "📖",
+    titulo: "Misión",
+    descripcion:
+      "Compartir el mensaje de Jesucristo y acompañar a las personas en el fortalecimiento de su fe mediante la enseñanza bíblica, la oración y el servicio.",
+  },
+  {
+    icono: "👁️",
+    titulo: "Visión",
+    descripcion:
+      "Ser una comunidad cristiana que impacte positivamente a las familias y a la sociedad, compartiendo el amor de Dios.",
+  },
+  {
+    icono: "💎",
+    titulo: "Valores",
+    descripcion: "Fe, amor, unidad, respeto, solidaridad y compromiso con Dios.",
+  },
+];
+const equipo = [
+  {
+    titulo: "Nuestra historia",
+    imagen: historia,
+    alt: "Fotografía de un momento de la historia de Misión Mundial",
+  },
+  { titulo: "Nuestra fe", imagen: fe, alt: "Fotografía de un encuentro de fe de Misión Mundial" },
+  {
+    titulo: "Nuestros pastores",
+    imagen: pastores,
+    alt: "Fotografía de los pastores de Misión Mundial",
+  },
+  {
+    titulo: "Nuestros ministerios",
+    imagen: ministerios,
+    alt: "Fotografía de los ministerios de Misión Mundial",
+  },
+];
+---
+
+<Seccion id="identidad" titulo="Nuestra identidad.">
+  <p class="mx-auto max-w-3xl text-center text-texto-suave" data-revelar>
+    En Misión Mundial creemos que nuestra identidad se construye a través de la fe, el amor y el
+    compromiso con Dios. Nuestra misión, visión y valores representan el propósito que nos une como
+    familia cristiana y nos guían para compartir el mensaje de Jesucristo y servir a nuestra
+    comunidad.
+  </p>
+  <ul class="mt-10 grid gap-6 sm:grid-cols-3" data-revelar-cascada>
+    {
+      pilares.map((pilar) => (
+        <li class="flex flex-col items-center rounded-marca bg-superficie p-6 text-center shadow-marca borde-marca">
+          <>
+            <span class="mb-4 text-4xl" aria-hidden="true">
+              {pilar.icono}
+            </span>
+            <h3 class="mb-2 font-titulos text-xl font-bold">{pilar.titulo}</h3>
+            <p class="text-texto-suave">{pilar.descripcion}</p>
+          </>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-revelar-cascada>
+    {
+      equipo.map((item) => (
+        <article class="group overflow-hidden rounded-marca bg-superficie shadow-marca borde-marca">
+          <>
+            <div class="overflow-hidden">
+              <Image
+                src={item.imagen}
+                alt={item.alt}
+                class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <h3 class="p-4 text-center font-titulos font-bold">{item.titulo}</h3>
+          </>
+        </article>
+      ))
+    }
+  </div>
+</Seccion>

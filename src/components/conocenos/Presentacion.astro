@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import Seccion from "../ui/Seccion.astro";
+import congregacion from "@pack/imagenes/conocenos-congregacion.jpg";
+---
+
+<Seccion id="presentacion">
+  <div class="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-2">
+    <div class="overflow-hidden rounded-marca shadow-marca" data-revelar>
+      <Image
+        src={congregacion}
+        alt="Fotografía de la congregación reunida"
+        class="h-64 w-full object-cover md:h-[390px]"
+      />
+    </div>
+    <div class="text-center md:text-left">
+      <p class="text-sm font-bold tracking-[0.2em] text-marca uppercase">Nuestra comunidad</p>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight md:text-5xl" data-revelar>Conócenos.</h1>
+      <p class="mt-5 text-texto-suave" data-revelar>
+        Somos una familia cristiana que comparte el mensaje de Jesucristo y busca transformar vidas
+        mediante la fe, la enseñanza bíblica y el servicio a la comunidad.
+      </p>
+    </div>
+  </div>
+</Seccion>
